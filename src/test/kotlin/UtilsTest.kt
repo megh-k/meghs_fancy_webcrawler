@@ -1,5 +1,7 @@
+package webcrawler
+
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 
 class UtilsTest {
     @Test

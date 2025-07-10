@@ -1,3 +1,5 @@
+package webcrawler
+
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -7,15 +9,15 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class WebCrawlerTest {
     private lateinit var testWebCrawler: WebCrawler
     private lateinit var testClient: HttpClient
 
-    @BeforeEach
+    @BeforeTest
     fun setUp() {
         val mockEngine =
             MockEngine { request ->
