@@ -5,32 +5,32 @@ import kotlin.test.Test
 
 class UtilsTest {
     @Test
-    fun validateUrlWithProtocol() {
+    fun `validateUrl with http protocol`() {
         assertEquals(true, validateUrl("http://www.example.com"))
     }
 
     @Test
-    fun validateUrlWithoutProtocol() {
+    fun `validateUrl without protocol`() {
         assertEquals(true, validateUrl("www.example.com"))
     }
 
     @Test
-    fun validateUrlNotAUrl() {
+    fun `validateUrl invalid url`() {
         assertEquals(false, validateUrl("this is clearly not a url"))
     }
 
     @Test
-    fun normaliseUrlStrWithoutProtocol() {
+    fun `normaliseUrlStr without protocol`() {
         assertEquals("http://www.example.com", normaliseUrlStr("www.example.com"))
     }
 
     @Test
-    fun normaliseUrlStrHttp() {
+    fun `normaliseUrlStr with http protocol`() {
         assertEquals("http://www.example.com", normaliseUrlStr("http://www.example.com"))
     }
 
     @Test
-    fun normaliseUrlStrHttps() {
+    fun `normaliseUrlStr with https protocol`() {
         assertEquals("https://www.example.com", normaliseUrlStr("https://www.example.com"))
     }
 }
