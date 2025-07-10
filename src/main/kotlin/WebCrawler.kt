@@ -21,6 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger
  * a set of url strings, a queue, queue size and the current active workers
  *
  * @param seedUrl the starting point of the webcrawl
+ * @param client Http client with a default
  * @property seedUrl the starting point of the webcrawl
  * @property domain the domain of the [seedUrl] provided
  * @property urlSet a set of relative URLs scraped from the domain
@@ -30,6 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger
  */
 class WebCrawler(
     seedUrl: String,
+    private val client: HttpClient = HttpClient(CIO),
 ) {
     val seedUrl: String =
         normaliseUrlStr(seedUrl).also {
@@ -84,14 +86,11 @@ class WebCrawler(
      */
     suspend fun scrapeUrls(urlStr: String) {
         activeWorkers.incrementAndGet()
-        val client = HttpClient(CIO)
         try {
             val response: HttpResponse = client.get(urlStr)
             getRelativeUrls(response)
         } catch (e: Exception) {
             println("Request to $urlStr failed: ${e.message}")
-        } finally {
-            client.close()
         }
     }
 
