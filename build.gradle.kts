@@ -18,6 +18,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jsoup:jsoup:1.21.1")
     implementation("org.slf4j:slf4j-simple:2.0.9")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
 
 tasks.test {
